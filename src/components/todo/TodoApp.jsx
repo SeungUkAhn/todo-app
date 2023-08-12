@@ -7,8 +7,10 @@ export default function TodoApp(){
         <div className="TodoApp">
             <BrowserRouter>
                 <Routes>
+                    <Route path='/' element={<LoginComponent/>}></Route>
                     <Route path='/login' element={<LoginComponent/>}></Route>
                     <Route path='/welcome' element={<WelcomeComponent/>}></Route>
+                    <Route path='/*' element={<ErrorComponent/>}></Route>
                 </Routes>
             </BrowserRouter>
         </div>
@@ -47,6 +49,7 @@ function LoginComponent(){
 
     return(
         <div className="Login">
+            <h1>Login</h1>
             {showSuccess && <div className="successMessage">인증 성공</div>}
             {showError && <div className="errorMessage">인증 실패. 자격 증명(credential)을 확인하세요.</div>}
 
@@ -70,7 +73,21 @@ function LoginComponent(){
 function WelcomeComponent(){
     return(
         <div className="Welcome">
-            Welcome Component
+            <h1>Welcome in Maicoding</h1>
+            <div>
+                Welcome Component
+            </div>
+        </div>
+    )
+}
+
+function ErrorComponent(){
+    return(
+        <div className="Error">
+            <h1>에러 발생</h1>
+            <div>
+                문제를 해결 중에 있습니다.
+            </div>
         </div>
     )
 }
