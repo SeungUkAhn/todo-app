@@ -1,6 +1,5 @@
 import './TodoApp.css'
-import {BrowserRouter, Route, Routes, useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import LogoutComponent from "./LogoutComponent";
 import HeaderComponent from "./HeaderComponent";
 import ListTodosComponent from "./ListTodosComponent";
@@ -11,7 +10,6 @@ import LoginComponent from "./LoginComponent";
 export default function TodoApp(){
     return(
         <div className="TodoApp">
-
             <BrowserRouter>
                 <HeaderComponent/>
                 <Routes>
