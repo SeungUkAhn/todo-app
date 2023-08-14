@@ -24,13 +24,9 @@ export default function LoginComponent(){
     }
 
     function handleSubmit(){
-        if(username==='maicoding' && password==='1234'){
-            authContext.SetAuthenticated(true)
-            setShowSuccess(true)
-            setShowError(false)
+        if(authContext.login(username, password)){
             navigate(`/welcome/${username}`)
         }else{
-            setShowSuccess(false)
             setShowError(true)
         }
     }
@@ -38,7 +34,6 @@ export default function LoginComponent(){
     return(
         <div className="Login">
             <h1>Login</h1>
-            {showSuccess && <div className="successMessage">인증 성공</div>}
             {showError && <div className="errorMessage">인증 실패. 자격 증명(credential)을 확인하세요.</div>}
 
             <div className="loginForm">

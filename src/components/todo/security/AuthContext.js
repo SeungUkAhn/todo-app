@@ -15,8 +15,18 @@ export default function AuthProvider({children}){
 
     //setInterval(() => setNumber(number + 1), 10000)
 
+    function login(username, password){
+        if(username==='maicoding' && password==='1234'){
+            SetAuthenticated(true)
+            return true
+        }else{
+            SetAuthenticated(false)
+            return false
+        }
+    }
+
     return(
-        <AuthContext.Provider value={{number, isAuthenticated, SetAuthenticated}}>
+        <AuthContext.Provider value={{number, isAuthenticated, SetAuthenticated, login}}>
             {children}
         </AuthContext.Provider>
     )
