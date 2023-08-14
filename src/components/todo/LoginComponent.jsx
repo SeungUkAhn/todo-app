@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {useAuth} from "./security/AuthContext";
 
 export default function LoginComponent(){
 
@@ -10,6 +11,8 @@ export default function LoginComponent(){
     const [showError, setShowError] = useState(false)
 
     const navigate = useNavigate();
+
+    const authContext = useAuth()
 
     function handleUsernameChange(e){
         setUsername(e.target.value)
@@ -22,6 +25,7 @@ export default function LoginComponent(){
 
     function handleSubmit(){
         if(username==='maicoding' && password==='1234'){
+            authContext.SetAuthenticated(true)
             setShowSuccess(true)
             setShowError(false)
             navigate(`/welcome/${username}`)

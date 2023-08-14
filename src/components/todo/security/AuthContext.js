@@ -11,10 +11,12 @@ export default function AuthProvider({children}){
     //컨텍스트에 상태 부여
     const [number, setNumber] = useState(10)
 
-    setInterval(() => setNumber(number + 1), 10000)
+    const [isAuthenticated, SetAuthenticated] = useState(false)
+
+    //setInterval(() => setNumber(number + 1), 10000)
 
     return(
-        <AuthContext.Provider value={{number}}>
+        <AuthContext.Provider value={{number, isAuthenticated, SetAuthenticated}}>
             {children}
         </AuthContext.Provider>
     )
