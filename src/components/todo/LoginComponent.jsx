@@ -18,7 +18,6 @@ export default function LoginComponent(){
     }
 
     function handlePasswordChange(e){
-        console.log(e.target.value)
         setPassword(e.target.value)
     }
 
