@@ -7,7 +7,6 @@ export default function LoginComponent(){
     const [username, setUsername] = useState('maicoding')
     const [password, setPassword] = useState('');
 
-    const [showSuccess, setShowSuccess] = useState(false)
     const [showError, setShowError] = useState(false)
 
     const navigate = useNavigate();

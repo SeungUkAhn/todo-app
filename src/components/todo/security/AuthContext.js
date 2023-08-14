@@ -9,11 +9,7 @@ export const useAuth = () => useContext(AuthContext)
 export default function AuthProvider({children}){
 
     //컨텍스트에 상태 부여
-    const [number, setNumber] = useState(10)
-
     const [isAuthenticated, SetAuthenticated] = useState(false)
-
-    //setInterval(() => setNumber(number + 1), 10000)
 
     function login(username, password){
         if(username==='maicoding' && password==='1234'){
@@ -25,8 +21,12 @@ export default function AuthProvider({children}){
         }
     }
 
+    function logout(){
+        SetAuthenticated(false)
+    }
+
     return(
-        <AuthContext.Provider value={{number, isAuthenticated, SetAuthenticated, login}}>
+        <AuthContext.Provider value={{isAuthenticated, login, logout}}>
             {children}
         </AuthContext.Provider>
     )
