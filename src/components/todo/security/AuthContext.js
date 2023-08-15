@@ -9,24 +9,27 @@ export const useAuth = () => useContext(AuthContext)
 export default function AuthProvider({children}){
 
     //컨텍스트에 상태 부여
-    const [isAuthenticated, SetAuthenticated] = useState(false)
+    const [isAuthenticated, setAuthenticated] = useState(false)
+    const [username, setUsername] = useState(null)
 
     function login(username, password){
         if(username==='maicoding' && password==='1234'){
-            SetAuthenticated(true)
+            setAuthenticated(true)
+            setUsername(username)
             return true
         }else{
-            SetAuthenticated(false)
+            setAuthenticated(false)
+            setUsername(null)
             return false
         }
     }
 
     function logout(){
-        SetAuthenticated(false)
+        setAuthenticated(false)
     }
 
     return(
-        <AuthContext.Provider value={{isAuthenticated, login, logout}}>
+        <AuthContext.Provider value={{isAuthenticated, login, logout, username}}>
             {children}
         </AuthContext.Provider>
     )
