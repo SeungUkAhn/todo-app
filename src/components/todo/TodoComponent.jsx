@@ -1,5 +1,5 @@
 import {useNavigate, useParams} from "react-router-dom";
-import {retrieveTodoApi, updateTodoApi} from "./api/TodoApiService";
+import {createTodoApi, retrieveTodoApi, updateTodoApi} from "./api/TodoApiService";
 import {useAuth} from "./security/AuthContext";
 import {useEffect, useState} from "react";
 import {Field, Form, Formik, ErrorMessage} from "formik";
@@ -19,12 +19,14 @@ export default function TodoComponent(){
     useEffect(() => retrieveTodo(),[id])
 
     function retrieveTodo(){
-        retrieveTodoApi(username, id)
-            .then(response => {
-                setDescription(response.data.description)
-                setTargetDate(response.data.targetDate)
-            })
-            .catch(error => console.log(error))
+        if(id !== -1){
+            retrieveTodoApi(username, id)
+                .then(response => {
+                    setDescription(response.data.description)
+                    setTargetDate(response.data.targetDate)
+                })
+                .catch(error => console.log(error))
+        }
     }
 
     function onSubmit(values){
@@ -36,11 +38,20 @@ export default function TodoComponent(){
             targetDate: values.targetDate,
             done: false
         }
-        updateTodoApi(username, id, todo)
-            .then(response => {
-                navigate('/todos')
-            })
-            .catch(error => console.log(error))
+
+        if(id === -1){   //post
+            createTodoApi(username, todo)
+                .then(response => {
+                    navigate('/todos')
+                })
+                .catch(error => console.log(error))
+        } else{         //update
+            updateTodoApi(username, id, todo)
+                .then(response => {
+                    navigate('/todos')
+                })
+                .catch(error => console.log(error))
+        }
     }
 
     function validate(values){
@@ -54,7 +65,7 @@ export default function TodoComponent(){
             errors.description = 'description은 5자 이상이어야 합니다.'
         }
 
-        if(values.targetDate == null){
+        if(values.targetDate === null || values.targetDate === ''){
             errors.targetDate = 'targetDate를 입력해주세요'
         }
 
