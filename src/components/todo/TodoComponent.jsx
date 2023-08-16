@@ -3,6 +3,7 @@ import {createTodoApi, retrieveTodoApi, updateTodoApi} from "./api/TodoApiServic
 import {useAuth} from "./security/AuthContext";
 import {useEffect, useState} from "react";
 import {Field, Form, Formik, ErrorMessage} from "formik";
+import moment from "moment";
 
 export default function TodoComponent(){
 
@@ -65,7 +66,7 @@ export default function TodoComponent(){
             errors.description = 'description은 5자 이상이어야 합니다.'
         }
 
-        if(values.targetDate === null || values.targetDate === ''){
+        if(values.targetDate === null || values.targetDate === '' || moment(values.targetDate).isValid()){
             errors.targetDate = 'targetDate를 입력해주세요'
         }
 
