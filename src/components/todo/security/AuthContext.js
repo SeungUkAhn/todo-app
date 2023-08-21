@@ -1,5 +1,5 @@
 import {createContext, useContext, useState} from "react";
-import {executeBasicAuthenticationService} from "../api/HelloWorldApiService";
+import {executeJwtAuthenticationService} from "../api/AuthenticationApiService";
 import {apiClient} from "../api/ApiClient";
 
 //컨텍스트 생성하기
@@ -27,20 +27,47 @@ export default function AuthProvider({children}){
     //     }
     // }
 
+    // async function login(username, password){
+    //
+    //     const baToken = 'Basic ' + window.btoa(username + ":" + password)   //base64 인코딩
+    //
+    //     try{
+    //         const response = await executeBasicAuthenticationService(baToken)
+    //
+    //         if(response.status === 200){
+    //             setAuthenticated(true)
+    //             setUsername(username)
+    //             setToken(baToken)
+    //             apiClient.interceptors.request.use(
+    //                 (config) => {
+    //                     config.headers.Authorization = baToken
+    //                     return config
+    //                 }
+    //             )
+    //             return true
+    //         }else{
+    //             logout()
+    //             return false
+    //         }
+    //     } catch(e){
+    //         logout()
+    //         return false
+    //     }
+    // }
+
     async function login(username, password){
 
-        const baToken = 'Basic ' + window.btoa(username + ":" + password)   //base64 인코딩
-
         try{
-            const response = await executeBasicAuthenticationService(baToken)
+            const response = await executeJwtAuthenticationService(username, password)
 
             if(response.status === 200){
+                const jwtToken = 'Bearer ' + response.data.token
                 setAuthenticated(true)
                 setUsername(username)
-                setToken(baToken)
+                setToken(jwtToken)
                 apiClient.interceptors.request.use(
                     (config) => {
-                        config.headers.Authorization = baToken
+                        config.headers.Authorization = jwtToken
                         return config
                     }
                 )

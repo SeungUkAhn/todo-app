@@ -66,7 +66,7 @@ export default function TodoComponent(){
             errors.description = 'description은 5자 이상이어야 합니다.'
         }
 
-        if(values.targetDate === null || values.targetDate === '' || moment(values.targetDate).isValid()){
+        if(values.targetDate === null || values.targetDate === ''){
             errors.targetDate = 'targetDate를 입력해주세요'
         }
 
