@@ -15,8 +15,7 @@ React를 기반으로 구축했습니다.
 - 라이브러리: Bootstrap, Axios, Formik, Moment
 
 # 스크린샷
+<img width="600" alt="image" src="https://github.com/SeungUkAhn/todo-app/assets/12409002/1093d1cf-6d76-4bd5-8a0a-a4bc5d87b75c">
 <img width="600" alt="image" src="https://github.com/SeungUkAhn/todo-app/assets/12409002/c8ce0c0c-9e93-4889-8efa-4a4499bb08a8">
 <img width="600" alt="image" src="https://github.com/SeungUkAhn/todo-app/assets/12409002/a465d74a-932a-40ce-b739-f838b18d4c90">
-<img width="600" alt="image" src="https://github.com/SeungUkAhn/todo-app/assets/12409002/1093d1cf-6d76-4bd5-8a0a-a4bc5d87b75c">
-
 
