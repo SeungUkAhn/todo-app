@@ -20,4 +20,4 @@ React를 기반으로 구축했습니다.
 <img width="600" alt="image" src="https://github.com/SeungUkAhn/todo-app/assets/12409002/a465d74a-932a-40ce-b739-f838b18d4c90">
 
 # Note
-- Todo 앱 백엔드: https://github.com/SeungUkAhn/restful-web-service2
+- Todo 앱 백엔드: https://github.com/SeungUkAhn/todo-app-backend
